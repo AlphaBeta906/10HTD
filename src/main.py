@@ -12,8 +12,14 @@ import inquirer
 
 from gradient import gradient
 from color import rgb_to_decimal
+from ansi import set_color, get_color_escape
 
+YELLOW = get_color_escape(255, 255, 0)
 RESET = '\033[0m'
+BOLD = '\033[1m'
+
+def play():
+    pass
 
 def title():
     f = Figlet(font='slant')
@@ -30,17 +36,19 @@ def title():
         )
     ]
     
-    answers = inquirer.prompt(questions)
-    
-    match answers['choice']:
-        case 'Play':
-            print('Play')
-        case 'Credits':
-            print('Credits')
-        case 'Exit':
-            print('Exit')
-        case _:
-            print(answers)
+    while True:
+        answers = inquirer.prompt(questions)
+        
+        match answers['choice']:
+            case 'Play':
+                play()
+                break
+            case 'Credits':
+                print(set_color('Credits', YELLOW + BOLD))
+            case 'Exit':
+                print('Exit')
+            case _:
+                print(answers)
 
 if __name__ == "__main__":
     title()
