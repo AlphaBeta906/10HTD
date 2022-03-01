@@ -1,0 +1,2 @@
+# Things We Won't Do
+- **Add a keyboard binded menu** - Due to errors when using the keyboard module in mac, we can't add a menu, due to the fact that the keyboard module is not working on mac and destroyed the interpreter. Sorry.
