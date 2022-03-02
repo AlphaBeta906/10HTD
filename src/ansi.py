@@ -3,7 +3,7 @@ This module is for ansi related functions, such as changing the color of text an
 into ansi color codes.
 
 Written by: AlphaBeta906
-Use: Helpers and Functions
+Use: Utils
 
 3/1/2022
 """

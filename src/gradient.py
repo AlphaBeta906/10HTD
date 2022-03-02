@@ -2,7 +2,7 @@
 This module is for console related functions, such as clearing a line.
 
 Written by: AlphaBeta906
-Use: Helpers and Functions
+Use: Utils
 
 3/1/2022
 """

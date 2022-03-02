@@ -2,7 +2,7 @@
 This module is for color related functions, such as decimal to rgb.
 
 Written by: AlphaBeta906
-Use: Helpers and Functions
+Use: Utils
 
 3/1/2022
 """

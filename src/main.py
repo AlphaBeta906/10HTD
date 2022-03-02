@@ -2,32 +2,133 @@
 This module is for running the main file.
 
 Written by: AlphaBeta906
-Use: Helpers and Functions
+Use: Main
 
 3/1/2022
 """
 
 from pyfiglet import Figlet
 import inquirer
+from random import randint
 
 from gradient import gradient
 from color import rgb_to_decimal
 from ansi import set_color, get_color_escape
+from console import clear_line
+from json_reader import JSONLoader
+from game import Game
+from nation import Nation
+from player import Player
+from er import exponential_randomness
 
 YELLOW = get_color_escape(255, 255, 0)
+RED = get_color_escape(255, 0, 0)
 RESET = '\033[0m'
 BOLD = '\033[1m'
 
+def json_to_class(json):
+    return Game(
+        [Nation(
+            card['name'], 
+            card['description'], 
+            card['hp'],
+            card['atk'],
+            card['rank']
+        ) for card in json['cards']],
+        Player(
+            json['player']['cards']
+        )
+    )
+
+def create_game():
+    cards = []
+
+    questions = [
+        inquirer.Text('card1',
+            message="What is the first nation's name?",
+        ),
+        inquirer.Text('card2',
+            message="What is the second nation's name?",
+        ),
+        inquirer.Text('card3',
+            message="What is the third nation's name?",
+        ),
+        inquirer.Text('card4',
+            message="What is the fourth nation's name?",
+        ),
+        inquirer.Text('card5',
+            message="What is the fifth nation's name?",
+        ),
+        inquirer.Text('card6',
+            message="What is the sixth nation's name?",
+        ),
+    ]
+
+    answers = inquirer.prompt(questions)
+    ordinal = lambda n: "%d%s" % (n,"tsnrhtdd"[(n//10%10!=1)*(n%10<4)*n%10::4])
+
+    for i in range(1, 7):
+        cards.append(Nation(answers['card' + str(i)], "This is the player's " + ordinal(i) + " nation.", randint(1, 15), randint(1, 15), exponential_randomness(5)))
+
+    player = Player([
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+    ])
+
+    game = Game(cards, player)
+
+    return game
+
 def play():
-    pass
+    data = JSONLoader('data/data.json')
+
+    if data.read() == {}:
+        print(RED + BOLD + 'Error: No data found.' + RESET)
+
+        questions = [
+            inquirer.List('action',
+                message='What would you like to do?',
+                choices=['Add a new game', 'Exit']
+            )
+        ]
+
+        answers = inquirer.prompt(questions)
+
+        if answers['action'] == 'Add a new game':
+            game = create_game()
+            data.write(game.to_json())
+        else:
+            return
+    else:
+        game = json_to_class(data.read())
+        player = game.player
+
+        cards = player.get_cards(game)
+
+        for card in cards:
+            card.info()
+            print()
 
 def title():
-    f = Figlet(font='slant')
+    f = Figlet(font='roman')
+
     print(gradient(
         f.renderText('10 Hours \'Til Doom'), 
-        rgb_to_decimal((255, 0, 0)), 
-        rgb_to_decimal((255, 255, 0))
+        rgb_to_decimal((255, 255, 255)), 
+        rgb_to_decimal((255, 0, 0))
     ) + RESET)
+
+    clear_line(2)
+
+    print(gradient(
+        'Version 0.1.0 - Genisis',
+        rgb_to_decimal((255, 255, 255)),
+        rgb_to_decimal((255, 0, 0))
+    ) + RESET + '\n')
 
     questions = [
         inquirer.List('choice',
