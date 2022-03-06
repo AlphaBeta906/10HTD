@@ -4,9 +4,9 @@
     "changes": [
         "Added a clear_screen function",
         "Added a info method to the card class",
-        "A menu for showinhg your cards and info",
+        "A menu for showing your cards and info",
         "Coins",
         "Added a version.json file with the changelog",
-        "Makes exitting the game in the main menu possible"
+        "Makes exiting the game in the main menu possible"
     ]
 }
