@@ -27,7 +27,7 @@ class IssueHandler:
         RED = get_color_escape(255, 0, 0)
 
         if value == 0:
-            return set_color('⋕ 0', RED)
+            return set_color('⋕ 0', GRAY)
         elif value > 0:
             return set_color(f'⇡ {value}', GREEN)
         elif value < 0:
