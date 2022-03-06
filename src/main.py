@@ -14,7 +14,7 @@ from random import randint
 from gradient import gradient
 from color import rgb_to_decimal
 from ansi import set_color, get_color_escape
-from console import clear_line
+from console import clear_line, clear_screen
 from json_reader import JSONLoader
 from game import Game
 from nation import Nation
@@ -23,7 +23,7 @@ from er import exponential_randomness
 
 YELLOW = get_color_escape(255, 255, 0)
 RED = get_color_escape(255, 0, 0)
-RESET = '\033[0m'
+MAGENTA = get_color_escape(255, 0, 255)
 BOLD = '\033[1m'
 
 def json_to_class(json):
@@ -36,11 +36,54 @@ def json_to_class(json):
             card['rank']
         ) for card in json['cards']],
         Player(
-            json['player']['cards']
+            json['player']['cards'],
+            json['player']['coins']
         )
     )
 
+def play_game(game):
+    player = game.player
+
+    while True:
+        questions = [
+            inquirer.List('action',
+                message='What would you like to do?',
+                choices=['View cards', 'View player', 'Upgrade cards', 'Exit']
+            )
+        ]
+
+        answers = inquirer.prompt(questions)
+
+        clear_screen()
+
+        match answers['action']:
+            case 'View cards':
+                cards = player.get_cards(game)
+                card_names = [card.name for card in cards]
+
+                questions = [
+                    inquirer.List('card',
+                        message='Which card would you like to view?',
+                        choices=card_names
+                    )
+                ]
+
+                answers = inquirer.prompt(questions)
+
+                clear_screen()
+                card = cards[card_names.index(answers['card'])]
+                card.info()
+            case 'View player':
+                player.info()
+            case 'Upgrade cards':
+                print(set_color('Coming soon...', YELLOW + BOLD))
+            case 'Exit':
+                break
+
+        print()
+
 def create_game():
+    clear_screen()
     cards = []
 
     questions = [
@@ -84,10 +127,11 @@ def create_game():
     return game
 
 def play():
+    clear_screen()
     data = JSONLoader('data/data.json')
 
     if data.read() == {}:
-        print(RED + BOLD + 'Error: No data found.' + RESET)
+        print(RED + BOLD + 'Error: No data found.')
 
         questions = [
             inquirer.List('action',
@@ -105,35 +149,31 @@ def play():
             return
     else:
         game = json_to_class(data.read())
-        player = game.player
-
-        cards = player.get_cards(game)
-
-        for card in cards:
-            card.info()
-            print()
+        play_game(game)
 
 def title():
+    version = JSONLoader('data/version.json').read()
+    clear_screen()
     f = Figlet(font='roman')
 
     print(gradient(
         f.renderText('10 Hours \'Til Doom'), 
         rgb_to_decimal((255, 255, 255)), 
         rgb_to_decimal((255, 0, 0))
-    ) + RESET)
+    ))
 
     clear_line(2)
 
     print(gradient(
-        'Version 0.1.0 - Genisis',
+        f'Version v{version["version"]} - {version["nick"]}',
         rgb_to_decimal((255, 255, 255)),
         rgb_to_decimal((255, 0, 0))
-    ) + RESET + '\n')
+    ) + '\n')
 
     questions = [
         inquirer.List('choice',
             message="What do you want to do?",
-            choices=['Play', 'Credits', 'Exit'],
+            choices=['Play', 'Credits', 'Changelog', 'Exit'],
         )
     ]
     
@@ -145,9 +185,22 @@ def title():
                 play()
                 break
             case 'Credits':
+                clear_screen()
                 print(set_color('Credits', YELLOW + BOLD))
+                print(set_color('Creator - ', YELLOW + BOLD) + set_color('AlphaBeta906', YELLOW))
+                print(set_color('Programmer - ', YELLOW + BOLD) + set_color('AlphaBeta906', YELLOW))
+                print(set_color('Ideas - ', YELLOW + BOLD) + set_color('AlphaBeta906', YELLOW))
+                print()
             case 'Exit':
-                print('Exit')
+                exit()
+            case 'Changelog':
+                clear_screen()
+                print(set_color('Changelog', MAGENTA + BOLD))
+
+                for i in range(len(version['changes'])):
+                    print(set_color(f'{i + 1}. ', MAGENTA + BOLD) + version['changes'][i])
+
+                print()
             case _:
                 print(answers)
 

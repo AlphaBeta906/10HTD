@@ -1,5 +1,5 @@
 """
-This module is for containg the Card class.
+This module is for containg the Card template class.
 
 Written by: AlphaBeta906
 Use: Classes
