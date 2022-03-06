@@ -1,12 +1,10 @@
 {
-    "version": "0.3.0",
-    "nick": "Abraham",
+    "version": "0.4.0",
+    "nick": "Alpha",
     "changes": [
-        "Added a clear_screen function",
-        "Added a info method to the card class",
-        "A menu for showing your cards and info",
-        "Coins",
-        "Added a version.json file with the changelog",
-        "Makes exiting the game in the main menu possible"
+        "Removed the requirement.txt file.",
+        "Added spellchecker and .vscode/settings.json.",
+        "Added issues.",
+        "Added stuff to the README.md file."
     ]
 }

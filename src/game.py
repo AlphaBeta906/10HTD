@@ -1,5 +1,5 @@
 """
-This module is for containg the Game class.
+This module is for containing the Game class.
 
 Written by: AlphaBeta906
 Use: Classes

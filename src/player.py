@@ -1,5 +1,5 @@
 """
-This module is for containg the Player class.
+This module is for containing the Player class.
 
 Written by: AlphaBeta906
 Use: Class
@@ -8,9 +8,11 @@ Use: Class
 """
 
 from pyfiglet import Figlet
+from color import rgb_to_decimal
 
 from game import Game
 from ansi import get_color_escape, set_color
+from gradient import gradient
 
 class Player:
     def __init__(self, cards: list, coins: int) -> None:
@@ -33,5 +35,9 @@ class Player:
 
     def info(self):
         f = Figlet(font='slant')
-        print(set_color(f.renderText('Player'), get_color_escape(255, 215, 0)))
+        print(gradient(
+            f.renderText('Player'), 
+            rgb_to_decimal((255, 215, 0)),
+            rgb_to_decimal((0, 0, 255))
+        ))
         print(set_color('Coins: ' + str(self.coins), get_color_escape(0, 0, 255)))

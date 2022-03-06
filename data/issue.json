@@ -1,0 +1,36 @@
+{
+    "Investment on Arms": {
+        "context": "@nation_self military is investing on biological weapons.",
+        "choices": {
+            "Yes": {
+                "reason": "\"This is a good investment,\" says @nation_self Secretary of Defense, @name. \"The world is getting more and more dangerous, we should invest in all the manpower we can get.\"",
+                "after": "@nation_self military is investing on biological weapons.",
+                "attack": 0.1,
+                "defense": 0.1
+            },
+            "No": {
+                "reason": "\"No!\" says @nation_self Secretary of Foreign Affairs, @name. \"We will be caught up in many unimportant war-related busyness if we reach this point of insanity.Don't invest!\"",
+                "after": "@nation_self military is not investing on biological weapons.",
+                "attack": -0.2,
+                "defense": -0.25
+            }
+        }
+    },
+    "Declaration on Immigrants": {
+        "context": "@nation recently is getting more immigrants.",
+        "choices": {
+            "Close Borders": {
+                "reason": "\"I mean the nation's border is getting too overcrowded,\" says Minister of Internal Affairs @name. \"If they come to our land, they will lead to more crime and more violence.\"",
+                "after": "@nation has a closed border.",
+                "attack": 0,
+                "defense": 0.5
+            },
+            "Ignore": {
+                "reason": "\"So?\" says immigrant @name. \"We left our homeland because of war. We left to have a better life. Look at how many families will suffer at the tyrannical hands of the nation they fled. Don't regulate immigration.\"",
+                "after": "@nation is ignoring all forms of immigration and has no regulation.",
+                "attack": 0.02,
+                "defense": -0.01
+            }
+        }
+    }
+}

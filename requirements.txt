@@ -1,2 +1,0 @@
-pythob-inquirer==2.9.1
-pyfiglet==0.7.5

@@ -15,6 +15,7 @@ from gradient import gradient
 from color import rgb_to_decimal
 from ansi import set_color, get_color_escape
 from console import clear_line, clear_screen
+from issue_handler import IssueHandler
 from json_reader import JSONLoader
 from game import Game
 from nation import Nation
@@ -32,8 +33,7 @@ def json_to_class(json):
             card['name'], 
             card['description'], 
             card['hp'],
-            card['atk'],
-            card['rank']
+            card['atk']
         ) for card in json['cards']],
         Player(
             json['player']['cards'],
@@ -43,6 +43,7 @@ def json_to_class(json):
 
 def play_game(game):
     player = game.player
+    data = JSONLoader('data/data.json')
 
     while True:
         questions = [
@@ -76,9 +77,35 @@ def play_game(game):
             case 'View player':
                 player.info()
             case 'Upgrade cards':
-                print(set_color('Coming soon...', YELLOW + BOLD))
+                cards = player.get_cards(game)
+                card_names = [card.name for card in cards]
+
+                if randint(1, 5) == 1:
+                    questions = [
+                        inquirer.List('card',
+                            message='Which card would you like to view?',
+                            choices=card_names
+                        )
+                    ]
+
+                    answers = inquirer.prompt(questions)
+                    card = cards[card_names.index(answers['card'])]
+
+                    issue_handler = IssueHandler(game, card)
+
+                    clear_screen()
+                    issue_data = issue_handler.handle()
+
+                    card.atk = issue_data['attack']
+                    card.hp = issue_data['defense']
+
+                    game.cards[card_names.index(answers['card'])] = card
+                else:
+                    print(set_color('No issues found.', YELLOW))
             case 'Exit':
                 break
+
+        data.write(game.to_json())
 
         print()
 
