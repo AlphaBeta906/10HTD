@@ -1,4 +1,7 @@
 ![LICENCE](https://img.shields.io/github/license/AlphaBeta906/10HTD?style=for-the-badge)
+![Commits](https://img.shields.io/github/last-commit/AlphaBeta906/10HTD?style=for-the-badge)
+![CodeCoverage](https://img.shields.io/codeclimate/maintainability/AlphaBeta906/10HTD?style=for-the-badge)
+
 ## 🖊 Ten Hours 'Till Doom
 ![Python](https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white)
 
