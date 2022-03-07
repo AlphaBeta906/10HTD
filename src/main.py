@@ -11,16 +11,16 @@ from pyfiglet import Figlet
 import inquirer
 from random import randint
 
-from gradient import gradient
-from color import rgb_to_decimal
-from ansi import set_color, get_color_escape
-from console import clear_line, clear_screen
-from issue_handler import IssueHandler
-from json_reader import JSONLoader
-from game import Game
-from nation import Nation
-from player import Player
-from er import exponential_randomness
+from services.gradient import gradient
+from services.color import rgb_to_decimal
+from services.ansi import set_color, get_color_escape
+from services.console import clear_line, clear_screen
+from classes.issue_handler import IssueHandler
+from services.json_reader import JSONLoader
+from classes.game import Game
+from classes.nation import Nation
+from classes.player import Player
+from services.er import exponential_randomness
 
 YELLOW = get_color_escape(255, 255, 0)
 RED = get_color_escape(255, 0, 0)

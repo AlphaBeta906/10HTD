@@ -7,8 +7,8 @@ Use: Classes
 3/2/2022
 """
 
-from card import Card
-from ansi import get_color_escape, set_color
+from .card import Card
+from services.ansi import get_color_escape, set_color
 
 class Nation(Card):
     def __init__(self, name, description, hp, atk) -> None:

@@ -1,4 +1,4 @@
 /.DS_Store
 /exclude
-/src/__pycache__
+__pycache__
 data.json

@@ -8,11 +8,11 @@ Use: Class
 """
 
 from pyfiglet import Figlet
-from color import rgb_to_decimal
 
-from game import Game
-from ansi import get_color_escape, set_color
-from gradient import gradient
+from services.color import rgb_to_decimal
+from .game import Game
+from services.ansi import get_color_escape, set_color
+from services.gradient import gradient
 
 class Player:
     def __init__(self, cards: list, coins: int) -> None:

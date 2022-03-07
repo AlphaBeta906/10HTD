@@ -11,9 +11,9 @@ from random import randint
 import inquirer
 from faker import Faker
 
-from json_reader import JSONLoader
-from ansi import get_color_escape, set_color
-from console import clear_screen
+from services.json_reader import JSONLoader
+from services.ansi import get_color_escape, set_color
+from services.console import clear_screen
 
 class IssueHandler:
     def __init__(self, game, selected_nation) -> None:

@@ -9,7 +9,7 @@ Use: Utils
 
 from colour import Color
 
-from ansi import get_color_escape_decimal, set_color
+from .ansi import get_color_escape_decimal, set_color
 
 def gradient(text, c1, c2):
     if '\n' in text: text_len = len(text.split('\n'))
