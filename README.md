@@ -1,7 +1,7 @@
 ## 🖊 Ten Hours 'Till Doom
 This is a trading card game, which is based on simulator games like Sid Mier's Civilization, adapted thru games like Magic: The Gathering, and plans to implement blockchain collectables.
 
-### How to set up
+### 🎛 How to set up
 Install the following packages:
 - [pyfiglet](https://pypi.org/project/pyfiglet/)
 - [inquirer](https://pypi.org/project/inquirer/)
@@ -9,9 +9,9 @@ Install the following packages:
 
 Then copy the files in the repository to your local machine.
 
-Finally, run the following command: `python3 main.py`
+Finally, run the following command: `python3 main.py` in the `src` folder.
 
-### FAQ
+### 💭 FAQ
 **[Q]** What is the purpose of this project?<br>
 **[A]** Basically, for fun and as a refresher to burnout with [my main project](https://blood-alchemy.netlify.com/).
 
