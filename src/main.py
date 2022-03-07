@@ -94,7 +94,7 @@ def play_game(game):
                     issue_handler = IssueHandler(game, card)
 
                     clear_screen()
-                    issue_data = issue_handler.handle()
+                    issue_data = issue_handler.handle(randint(0, len(issue_handler.issues) - 1))
 
                     card.atk = issue_data['attack']
                     card.hp = issue_data['defense']

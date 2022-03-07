@@ -50,9 +50,6 @@ class IssueHandler:
         BOLD = '\033[1m'
         RESET = '\033[m'
 
-        if issue is None:
-            issue = randint(0, len(self.issues) - 1)
-
         if len(list(self.issues.keys())) - 1 < issue:
             raise IndexError('Issue does not exist.')
         else:
