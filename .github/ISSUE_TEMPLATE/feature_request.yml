@@ -1,0 +1,43 @@
+name: Bug Report
+description: Request a feature
+title: "[Bug]: "
+labels: ["bug"]
+assignees:
+  - AlphaBeta906
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this feature request!
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: How can we get in touch with you if we need more info?
+      placeholder: ex. email@example.com
+    validations:
+      required: false
+  - type: textarea
+    id: input
+    attributes:
+      label: What do you want?
+      description: Also tell us, what supplamentary features to be added aswell.
+      placeholder: Blah blah blah
+      value: "Uhh..."
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why would you like it to be added?
+      description: It's important to weigh the values in this request. Is this really nesissary?
+      value: "Because..."
+      placeholder: Because...
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
