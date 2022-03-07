@@ -2,6 +2,7 @@
 ![Commits](https://img.shields.io/github/last-commit/AlphaBeta906/10HTD?style=for-the-badge)
 ![CodeCoverage](https://img.shields.io/codeclimate/maintainability/AlphaBeta906/10HTD?style=for-the-badge)
 ![Version](https://img.shields.io/github/v/tag/AlphaBeta906/10HTD?include_prereleases&sort=semver&style=for-the-badge)
+![Size](https://img.shields.io/github/languages/code-size/AlphaBeta906/10HTD?style=for-the-badge)
 
 ## 🖊 Ten Hours 'Till Doom
 ![Python](https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white)
