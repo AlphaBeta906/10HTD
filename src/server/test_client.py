@@ -13,6 +13,6 @@ while True:
         if message=='quit':
             break
         sock.sendall(message.encode('utf-8'))
-    except:
+    except Exception as e:
         break
 sock.close()

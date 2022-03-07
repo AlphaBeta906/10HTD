@@ -13,5 +13,5 @@ while True:
     try:
         data = connection.recv(999)
         print(data.decode('utf-8'))
-    except:
+    except Exception as e:
         connection.close()
