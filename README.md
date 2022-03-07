@@ -1,4 +1,6 @@
+![LICENCE](https://img.shields.io/github/license/AlphaBeta906/10HTD?style=for-the-badge)
 ## 🖊 Ten Hours 'Till Doom
+![Python](https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white)
 This is a trading card game, which is based on simulator games like Sid Mier's Civilization, adapted thru games like Magic: The Gathering, and plans to implement blockchain collectables.
 
 ### 🎛 How to set up
